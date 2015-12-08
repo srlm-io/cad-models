@@ -1,2 +1,3 @@
 # cad-models
-Various Open Scad models for 3D Printing
+
+Various Openscad models for 3D Printing.

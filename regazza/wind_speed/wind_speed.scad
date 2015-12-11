@@ -19,8 +19,8 @@ axle_height=80;
 echo(str("Blade Width  is ",blade_width));
 echo(str("Blade Length 2 is ",blade_length2));
 
-//wheel();
-blade();
+wheel();
+//blade();
 
 module wheel() {
 	union() {
@@ -37,9 +37,14 @@ module wheel() {
 
 module blade() {
 	angle=asin((blade_radius-blade_width)/blade_radius);
-	translate([0,blade_radius,0]) /*rotate([0,0,angle])*/ difference() {
-		#cylinder(r=blade_radius, h=blade_height);
+	translate([0,blade_radius,0]) rotate([0,0,angle]) difference() {
+	    //Body
+		cylinder(r=blade_radius, h=blade_height);
+		
+		// Inside radius
 		translate([0, 0, -0.05]) cylinder(r=blade_radius-blade_thickness, h=blade_height+.1);
+		
+		
 		translate([blade_width-blade_radius,-blade_radius,-0.05]) cube([blade_radius*2,blade_radius*2,blade_height+.1]);
 	}
 

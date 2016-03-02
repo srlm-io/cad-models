@@ -2,20 +2,19 @@
 // Derrived from http://www.thingiverse.com/thing:6095
 // Commercial version as inspiration: http://www.nuovaceva.it/prodotto-ing.php?cat=7&sc=17&prod=77
 
-blade_radius=50;
-blade_thickness=4;
-blade_height=60;
-blade_angle=15;
-arm_straight=60;
+blade_radius=20;
+blade_thickness=1.2;
+blade_height=35;
+blade_angle=0;
+arm_straight=12;
 num_blades=3;
 wheel_base_height=1.05;
 hub_height=blade_height+5;
-axle_radius=6;
-axle_height=hub_height+80;
-hub_radius=axle_radius+4;
+axle_radius=3;
+axle_height=hub_height+20;
+hub_radius=axle_radius+2;
 
-$fa=1;
-$fs=0.5;
+$fn=60;
 
 wheel();
 //blade();

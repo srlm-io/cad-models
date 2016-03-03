@@ -1,6 +1,6 @@
 box_width_1=130;
 box_width_2=120;
-box_length=144;
+box_length=140;
 box_height=70;
 box_bottom_thickness=4;
 
@@ -19,13 +19,14 @@ screw_free_diameter=3.6; //minimum diameter to not engage thread
 screw_engage_diameter=2.5;
 screw_wall_outside_diameter = screw_free_diameter + 4;
 
-rudder_servo_offset_from_bottom = 75;
-sail_servo_offset_from_bottom = 122;
+rudder_servo_offset_from_bottom = 71;
+sail_servo_offset_from_bottom = 118;
 sail_servo_offset_from_centerline = 34;
 
 screw_axis_from_wall=sqrt(pow(screw_wall_outside_diameter/2,2)/2); // Get it so that not space appears in the corner.
 
 $fn=60;
+
 
 arrow_translate=[arrow_offset_from_centerline,0, box_top_thickness-arrow_diameter/2 - arrow_wall_thickness];
 arrow_rotate=[90, 0, 0];
@@ -70,7 +71,7 @@ module gps(){
     cube([50,50,10], center=true); // Current GPS
     //cylinder(d=100, h=10); // PRO GPS http://www.csgshop.com/product.php?id_product=211
 }
-%translate([25,-40,0]) gps();
+%translate([25,-37,0]) gps();
 
 module sailServo(){
     // Winding drum
@@ -224,7 +225,7 @@ difference(){
 
 
 // Bottom shell
-translate([0,0,-150])
+%translate([0,0,-150])
 mirror([0,0,1]){
     // Bottom surface
     linear_extrude(height=box_bottom_thickness) fourSided(box_width_1, box_width_2, box_length);

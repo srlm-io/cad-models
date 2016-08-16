@@ -1,3 +1,13 @@
+// todo
+// chamfer base edges
+// Add GPS cut out
+// Add threaded insert pockets
+//   -- box bottom
+//   -- servos
+//   -- gps
+// Antenna ports
+// Wind sensor port
+
 box_width_1=130;
 box_width_2=120;
 box_length=140;
@@ -19,9 +29,9 @@ screw_free_diameter=3.6; //minimum diameter to not engage thread
 screw_engage_diameter=2.5;
 screw_wall_outside_diameter = screw_free_diameter + 4;
 
-rudder_servo_offset_from_bottom = 71;
+rudder_servo_offset_from_bottom = 83;
 sail_servo_offset_from_bottom = 118;
-sail_servo_offset_from_centerline = 34;
+sail_servo_offset_from_centerline = -15;
 
 screw_axis_from_wall=sqrt(pow(screw_wall_outside_diameter/2,2)/2); // Get it so that not space appears in the corner.
 
@@ -76,18 +86,18 @@ module gps(){
 module sailServo(){
     // Winding drum
     winding_drum_diameter=47;
-    winding_drum_thickness=11.3;
+    winding_drum_thickness=6; // Full height: 11.3
     winding_drum_deck_height=16.5;
     translate([0,0,winding_drum_deck_height]) cylinder(d=winding_drum_diameter, h=winding_drum_thickness);
     
     servo(
         length=58.93,
         width=29.1,
-        height=30,
+        height=52.19,
         axis_offset_length = 13, // axis disance from edge
         screw_distance_from_body=4.23,
         screw_distance_from_centerline=7.75,
-        height_above_deck=12.3
+        height_above_deck=13.58
     );
 }
 
@@ -186,8 +196,8 @@ module boxTop(){
         translate([
             sail_servo_offset_from_centerline,
             -box_length/2+sail_servo_offset_from_bottom,
-            box_top_thickness
-        ]) rotate([0,0,180]) #sailServo();
+            0
+        ]) #sailServo();
         
         // Rudder Servo
         translate([

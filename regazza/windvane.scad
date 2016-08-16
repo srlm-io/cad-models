@@ -10,16 +10,6 @@ shaftDiameter=3.175;
 shaftMatingLength=15;
 shaftWallThickness=1.5;
 
-
-volumePointyEnd = pointyEndLength * pow(backboneDiameter/2, 2) *3.14 + pow(backboneDiameter/2, 3)*3.14*4/3;
-
-echo("Volume Pointy End: ", volumePointyEnd);
-
-volumeVaneEnd = vaneEndLength * pow(backboneDiameter/2, 2) *3.14 + (vaneHeight * vaneStraightLength * vaneThickness / 2) + (vaneStraightLength * vaneHeight * vaneThickness);
-
-echo("Volume Vane End: ", volumeVaneEnd);
-
-
 module triangle(o_len, a_len, depth){
     linear_extrude(height=depth){
         polygon(points=[[0,0], [a_len, 0], [0, o_len]], paths=[[0,1,2]]);
@@ -42,10 +32,10 @@ difference(){
         // Backbone
         translate([-pointyEndLength, 0, 0]) rotate([0, 90, 0]) cylinder(h=pointyEndLength + vaneEndLength, d=backboneDiameter);
 
-        // Straight portion
+        // Vane straight portion
         translate([vaneEndLength - vaneStraightLength, -vaneThickness/2, 0]) cube([vaneStraightLength, vaneThickness, vaneHeight]);
 
-        // Sloped portion
+        // Vane sloped portion
         translate([vaneEndLength - vaneStraightLength, -vaneThickness/2, 0]) rotate([90, 0, 180]) triangle(vaneHeight, vaneRiseDistance, vaneThickness);
         
         // axis shaft shell
@@ -53,5 +43,5 @@ difference(){
 
     }
     
-    translate([0,0,-shaftMatingLength/2 -0.1]) cylinder(h=shaftMatingLength+0.2, d=shaftDiameter);
+    #translate([0,0,-shaftMatingLength/2 -0.1]) cylinder(h=shaftMatingLength+0.2, d=shaftDiameter);
 }

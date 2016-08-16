@@ -1,0 +1,3 @@
+[submodule "vendor/scad-utils"]
+	path = vendor/scad-utils
+	url = git@github.com:OskarLinde/scad-utils.git

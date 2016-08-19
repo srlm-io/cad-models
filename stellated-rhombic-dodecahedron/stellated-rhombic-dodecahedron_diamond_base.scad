@@ -1,9 +1,9 @@
 // stellated rhombic dodecahedron
 
 use <stellated-rhombic-dodecahedron.scad>;
-use <chamfer_base.scad>;
+use <../chamfer_base.scad>;
 x_count = 6;
-y_count = 6;
+y_count = 8;
 
 h=10;
 b=15;

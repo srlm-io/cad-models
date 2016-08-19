@@ -92,5 +92,5 @@ module insert(){
    }
 }
 
-outsert();
-//color([1,0,0]) insert();
+//outsert();
+color([1,0,0]) insert();

@@ -15,7 +15,7 @@ height = 20;
 
 text_base_thickness = 10;
 
-use <vendor/scad-utils/morphology.scad>
+use <../vendor/scad-utils/morphology.scad>
 
 module generate_text(address, address_height, names, name_height, row_height){
    text(address, halign="center", valign="top", size=address_height, font="Noto Sans CJK JP:style=Black");
@@ -26,7 +26,7 @@ module generate_text(address, address_height, names, name_height, row_height){
    }
 }
 
-use <chamfer_base.scad>;
+use <../chamfer_base.scad>;
 module generate_insert(thickness){
    union(){
       // Text
@@ -92,5 +92,5 @@ module insert(){
    }
 }
 
-//outsert();
-color([1,0,0]) insert();
+outsert();
+//color([1,0,0]) insert();

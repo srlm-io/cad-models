@@ -2,10 +2,10 @@ tower_size=100;
 tower_wall_thickness=10;
 tower_min_distance=3;
 
-tower_slices=100;
+tower_slices=1000;
 
 bt(tower_size, tower_wall_thickness, tower_min_distance)
-rt(tower_size, tower_wall_thickness, tower_min_distance)
+//rt(tower_size, tower_wall_thickness, tower_min_distance)
 ;
 
 include <../print_volumes/form2.scad>

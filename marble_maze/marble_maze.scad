@@ -1,7 +1,7 @@
 
 
 //$fn=100;
-tunnel_diameter=16+2; // mm, based on http://glassmarbles.com/size.htm
+tunnel_diameter=16+4; // mm, based on http://glassmarbles.com/size.htm
 tunnel_offset=tunnel_diameter+4;
 
 maze_boundary_padding=[8, 8, 8];

@@ -1,3 +1,7 @@
+// Use like
+//
+// use <chamfer_base.scad>;
+
 module chamfer_base(length, width, height, chamfer_height){
       ch = chamfer_height;
       hull(){ // transition the corners from round to sharp

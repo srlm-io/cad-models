@@ -1,5 +1,4 @@
 // A simple U shaped "maze"
-
 segments = [
    [[0, -1, 0], [0, 1, 0]],
    [[0, 1, 0], [0, 1, 2]],

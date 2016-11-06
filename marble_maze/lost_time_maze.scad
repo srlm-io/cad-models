@@ -42,6 +42,6 @@ size=[4,4,4];
 title = "Lost Time";
 
 include <marble_maze.scad>;
-
-generate_maze(title, size, segments);
-//generate_maze_path(segments);
+$fn=100;
+//generate_maze(title, size, segments);
+generate_maze_path(segments);

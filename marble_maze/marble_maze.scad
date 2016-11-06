@@ -1,7 +1,8 @@
 
 
 //$fn=100;
-tunnel_diameter=16+4; // mm, based on http://glassmarbles.com/size.htm
+//NB: tunnel size seems to be undersized by 0.3mm due to printing
+tunnel_diameter=16+2; // mm, based on http://glassmarbles.com/size.htm
 tunnel_offset=tunnel_diameter+4;
 
 maze_boundary_padding=[8, 8, 8];
@@ -23,13 +24,14 @@ module generate_maze_path(segments){
 }
 
 module generate_maze(title, size, segments){
-   t = [tunnel_diameter, tunnel_diameter, tunnel_diameter];
+   box_roundness = tunnel_diameter/4;
+   t = [box_roundness, box_roundness, box_roundness];
    cube_size_scaled = size*tunnel_offset;
 
    difference(){
       translate(t/2-maze_boundary_padding/2) minkowski(){
          cube(cube_size_scaled - t + maze_boundary_padding);
-         sphere(d=tunnel_diameter);
+         sphere(d=box_roundness);
       }
 
       translate([
@@ -46,10 +48,10 @@ module generate_maze(title, size, segments){
 
 
 // A simple U shaped "maze"
+/*
+$fn=20;
 
-//$fn=100;
-
-/*segments = [
+segments = [
    [[0, -1, 0], [0, 1, 0]],
    [[0, 1, 0], [0, 1, 2]],
    [[0, 1, 2], [0, -1, 2]]
@@ -57,11 +59,11 @@ module generate_maze(title, size, segments){
 
 size=[1,2,3];
 
-title = "U Maze";*/
+title = "U Maze";
 
 
-//generate_maze(title, size, segments);
+generate_maze(title, size, segments);
 //generate_maze_path(segments);
 
-
+*/
 

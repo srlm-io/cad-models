@@ -11,5 +11,8 @@ title = "U";
 
 include <marble_maze.scad>;
 
-generate_maze(title, size, segments);
-//generate_maze_path(segments);
+if (part == "key"){
+   generate_maze_path(segments);
+} else {
+   generate_maze(title, size, segments);
+}

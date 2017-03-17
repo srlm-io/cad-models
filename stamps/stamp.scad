@@ -12,15 +12,16 @@ module make_stamped(depth){
    echo("Making stamped");
    // For development, comment out the minkowski and set the extrude to depth
    minkowski(){
-      linear_extrude(/*depth*/0.001)  children(0);
+      linear_extrude(/*depth/**/0.001)  children(0);
       cylinder(r1=0.5*depth, r2=0, h=depth);
    }
 }
 
 module stamp(){
-   translate([boundary, base_height-boundary, base_depth]){
-      for (i = [0:len(text_lines)-1]){
-         translate([0, -i*text_size*text_spacing-text_size, 0]) make_stamped(depth) text(text_lines[i], size=text_size);
+   echo("Children: ", $children);
+   translate([base_width-boundary, base_height-boundary, base_depth]) mirror([1,0,0]) {
+      for (j = [0 : 1 : $children - 1]){
+         make_stamped(depth) children(j);
       }
    }
 
@@ -29,13 +30,12 @@ module stamp(){
 
 module body(){
    difference(){
-   translate([-stamp_wall_thickness, -stamp_wall_thickness, -2*stamp_wall_thickness-0.001])
-   cube([base_width + 2*stamp_wall_thickness, base_height+2*stamp_wall_thickness, base_depth + 2*stamp_wall_thickness]);
+      translate([-stamp_wall_thickness, -stamp_wall_thickness, -2*stamp_wall_thickness-0.001]) cube([base_width + 2*stamp_wall_thickness, base_height+2*stamp_wall_thickness, base_depth + 2*stamp_wall_thickness]);
       // Use a cube here instead of the child so that we aren't dependent on a Minkowski
       cube([base_width, base_height, base_depth]);
    }
 
-   translate([base_width/2, base_height/2, -(base_depth + 2*stamp_wall_thickness)/2+0.001])  rotate([180, 0, 0]){
+   translate([base_width/2, base_height/2, -2*stamp_wall_thickness + 0.001])  rotate([180, 0, 0]){
       cylinder(h=stem_height, d=stem_dia, $fn=10);
       translate([0, 0, stem_height]) sphere(d=grip_dia, $fn=10);
    };
